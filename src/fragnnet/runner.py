@@ -31,7 +31,7 @@ from fragnnet.utils.profile_utils import MyPyTorchProfiler
 from fragnnet.utils.setup_utils import get_dataset_cls, get_model_cls
 
 
-def load_config(template_fp: str, custom_fp: str | None, override: list | None) -> dict:
+def load_config(template_fp: str, custom_fp: str | None, override: list | None = None) -> dict:
     """load config from template and custom yaml files
         if custom_fp is given, overwrite template config with custom config
     Args:
@@ -340,7 +340,11 @@ def log_cuda_info() -> None:
 
 
 def init_run(
-    template_fp: str, custom_fp: str, wandb_mode: str, job_id: str, override: list | None
+    template_fp: str,
+    custom_fp: str,
+    wandb_mode: str,
+    job_id: str | None = None,
+    override: list | None = None,
 ) -> L.LightningModule:
     """
     Main entry point for initializing and running a training/validation/testing job.

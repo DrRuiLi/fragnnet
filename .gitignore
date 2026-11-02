@@ -34,9 +34,11 @@ debug_output/
 saved_ckpts/
 saved_ckpt/
 ckpts/
+*.ckpt
 metrics.pickle
 model_eval/
 tmp_ckpt/
+results/
 job_id/
 extra/
 

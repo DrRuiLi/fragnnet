@@ -6,11 +6,9 @@ from fragnnet.iceberg.pl_model import IcebergGenPL, IcebergIntenPL
 from fragnnet.massformer.pl_model import MassFormerPL
 from fragnnet.pl_model import (
     GNNPL,
-    MCESPL,
     FraGNNetPL,
     NeimsPL,
     PrecursorPL,
-    SpectrumMolClipPL,
 )
 
 
@@ -43,9 +41,11 @@ def get_model_cls(model_type: str) -> type:
     elif model_type == "gnn":
         model_cls = GNNPL
     elif model_type == "mces_pretraining":
-        model_cls = MCESPL
+        raise ValueError("mces_pretraining requires src/fragnnet/pl_model/mces_pl.py, which is not in this repo")
     elif model_type in ["clip", "spec_mol_clip_pretraining"]:
-        model_cls = SpectrumMolClipPL
+        raise ValueError(
+            "clip pretraining requires src/fragnnet/pl_model/spectrum_mol_clip_pl.py, which is not in this repo"
+        )
     else:
         raise ValueError(f"Unknown model type: {model_type}")
     return model_cls

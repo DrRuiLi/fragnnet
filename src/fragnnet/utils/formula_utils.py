@@ -25,8 +25,12 @@ PREC_TYPE_TO_MASS_DIFF = {
     "[M+K]+": K_MASS - ELECTRON_MASS,
     "[M+NH4]+": N_MASS + 4 * H_MASS - ELECTRON_MASS,
     "[M-H2O+H]+": -H_MASS - O_MASS - ELECTRON_MASS,
+    "[M+H-H2O]+": -H_MASS - O_MASS - ELECTRON_MASS,
     "[M-2H2O+H]+": -3 * H_MASS - 2 * O_MASS - ELECTRON_MASS,
+    "[M+H-2H2O]+": -3 * H_MASS - 2 * O_MASS - ELECTRON_MASS,
     "[M+H-NH3]+": -2 * H_MASS + N_MASS - ELECTRON_MASS,
+    # [M+H-CH2O2]+ = M + H - CH2O2, net -C -H -O2
+    "[M+H-CH2O2]+": -C_MASS - H_MASS - 2 * O_MASS - ELECTRON_MASS,
     "[M]+": -ELECTRON_MASS,
     "": 0.0,
     # negative stuff
@@ -36,6 +40,8 @@ PREC_TYPE_TO_MASS_DIFF = {
     "[M-H-H2O]-": -3 * H_MASS - O_MASS + ELECTRON_MASS,
     "[M-H+2i]-": -H_MASS + 2 * I_MASS + ELECTRON_MASS,
     "[M+HCOOH-H]-": C_MASS + 1 * H_MASS + 2 * O_MASS + ELECTRON_MASS,
+    # formate adduct; same mass as [M+HCOOH-H]-
+    "[M+CHO2]-": C_MASS + H_MASS + 2 * O_MASS + ELECTRON_MASS,
     "[M+CH3COOH-H]-": 2 * C_MASS + 4 * H_MASS + 2 * O_MASS + ELECTRON_MASS,
     "[M+CH3COO]-": 2 * C_MASS + 4 * H_MASS + 2 * O_MASS + ELECTRON_MASS,
     # some NL adducts
@@ -50,8 +56,11 @@ PREC_TYPE_TO_CMF_MASS_DIFF = {
     "[M+K]+": H_MASS - ELECTRON_MASS,
     "[M+NH4]+": H_MASS - ELECTRON_MASS,
     "[M-H2O+H]+": H_MASS - ELECTRON_MASS,
+    "[M+H-H2O]+": H_MASS - ELECTRON_MASS,
     "[M-2H2O+H]+": H_MASS - ELECTRON_MASS,
+    "[M+H-2H2O]+": H_MASS - ELECTRON_MASS,
     "[M+H-NH3]+": H_MASS - ELECTRON_MASS,
+    "[M+H-CH2O2]+": H_MASS - ELECTRON_MASS,
     # negative stuff
     "[M-H]-": -H_MASS + ELECTRON_MASS,
     "[M-H-CO2]-": -H_MASS + ELECTRON_MASS,
@@ -61,6 +70,7 @@ PREC_TYPE_TO_CMF_MASS_DIFF = {
     "[M+CH3COOH-H]-": -H_MASS + ELECTRON_MASS,
     "[M+CH3COO]-": -H_MASS + ELECTRON_MASS,
     "[M+HCOOH-H]-": -H_MASS + ELECTRON_MASS,
+    "[M+CHO2]-": -H_MASS + ELECTRON_MASS,
 }
 
 PREC_TYPE_TO_FORMULA_DIFF = {
@@ -70,8 +80,11 @@ PREC_TYPE_TO_FORMULA_DIFF = {
     "[M+K]+": "K1",
     "[M+NH4]+": "N1H4",
     "[M-H2O+H]+": "O-1H-1",
+    "[M+H-H2O]+": "O-1H-1",
     "[M-2H2O+H]+": "O-2H-3",
+    "[M+H-2H2O]+": "O-2H-3",
     "[M+H-NH3]+": "H-2N-1",
+    "[M+H-CH2O2]+": "C-1H-1O-2",
     "[M]+": "",
     # negative stuff
     "[M-H]-": "H-1",
@@ -80,6 +93,7 @@ PREC_TYPE_TO_FORMULA_DIFF = {
     "[M-H-H2O]-": "H-2O-2",
     "[M-H+2i]-": "H-1I2",
     "[M+HCOOH-H]-": "CH2O2",
+    "[M+CHO2]-": "CHO2",
     "[M+CH3COOH-H]-": "C2H3O2",
     "[M+CH3COO]-": "C2H3O2",
 }
