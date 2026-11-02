@@ -42,6 +42,14 @@ results/
 job_id/
 extra/
 
+# NIST23 is a licensed commercial library. Keep the spectra, exports,
+# database files, and the notes that inventory that library out of git.
+# Weights trained on it are covered by *.ckpt, results/, and tmp_ckpt/.
+notebooks/nist23_training.qmd
+*.msp
+*.db
+*.sqlite
+
 # HPC / Scripts
 jobs/
 slurm_scripts/
